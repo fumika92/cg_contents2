@@ -34,6 +34,20 @@ class PostController extends Controller
     {
         $input_post = $request['post'];
         $input_post += ['user_id' => $request->user()->id];
+        $image = $request->file('image');
+        
+        //画像がアップロードされていればStorageに保存
+        if($request->hasFile('image')){
+            //バケットの'fumika01'フォルダへアップロード
+            $path = Storage::disk('s3')->putFile('/post', $image, 'public');
+            //アップロードした画像のフルパスを取得
+            $url = Storage::disk('s3')->url($path);
+        }else{
+            $url = null;
+        }
+        
+        $input_post += ['image_path' => $url];
+        
         $post->fill($input_post)->save();
         return redirect('contents/' . $post->id);
     }
@@ -61,7 +75,7 @@ class PostController extends Controller
             //アップロードした画像のフルパスを取得
             $url = Storage::disk('s3')->url($path);
         }else{
-            $path = null;
+            $url = null;
         }
         //データをデータベースに入れる
         $post->fill([

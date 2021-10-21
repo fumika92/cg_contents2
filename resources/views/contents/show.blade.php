@@ -7,8 +7,8 @@
         </article>
         <aside class="main_profile">
           <div class="main_profile_top">
-            <img class="icon" src="">
-            <p>{{ $post->user->name }}</p>
+            <img class="icon" src="{{ $post->user->image_path }}">
+            <p><a href="/users/{{ $post->user_id }}">{{ $post->user->name }}</a></p>
           </div>
           <div class="main_profile_under">
             <button type="button" name="btn_edit"><a href="/contents/{{ $post->id }}/edit">編集する</a></button>
@@ -26,6 +26,15 @@
           {{ $post->body }}
         </p>
         <p>{{ $post->updated_at->format('Y年m月d日') }}</p>
+    </div>
+    <div class="comment">
+        <img class="icon" src="image04.jpg">
+        <div class="comment_text">
+          <p>ユーザー名</p>
+          <p>〇年〇月〇日</p>
+          <p>ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキス
+            トダミーテキストダミーテキストダミーテキストダミーテキスト</p>
+        </div>
     </div>
     <div class="comment">
         <img class="icon" src="image04.jpg">

@@ -15,7 +15,7 @@
           <h1><a href="/">CG制作投稿サイト</a></h1>
           <nav>
             <form class="main_nav_search" action="index.html" method="post">
-              <input class="nav_search" type="search" name="nav_search" size="50" placeholder="検索">
+              <span class="nav_search_span"><input class="nav_search" type="search" name="nav_search" size="50" placeholder="検索"></span>
               <select class="nav_category_select" name="nav_category" size="1">
                 <option value="" label="カテゴリ"></option>
                 <option value="" label="＜モデル＞"></option>
@@ -34,7 +34,7 @@
                 <option value="" label="＜スクリプト＞"></option>
                 <option value="" label="スクリプト"></option>
               </select>
-              <button type="submit" name="search_button">検索</button>
+              <button class="btn_search" type="submit" name="search_button">検索</button>
             </form>
             <ul class="main_nav_list">
                 @guest
@@ -48,7 +48,7 @@
                     @endif
                 @else
                     <li>
-                        <a href="/user/{{ $post->user_id }}/about">{{ Auth::user()->name }}</a>
+                        <a href="/users/{{ Auth::user()->id }}">{{ Auth::user()->name }}</a>
                     </li>
                     <li>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

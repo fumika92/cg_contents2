@@ -145,6 +145,14 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'post.tite' => 'タイトル',
+        'post.body' => '説明文',
+        'image' => '画像',
+        
+        'user.name' => 'ユーザー名',
+        'user.email' => 'メールアドレス',
+        'user.body' => '自己紹介',
+        ],
 
 ];
