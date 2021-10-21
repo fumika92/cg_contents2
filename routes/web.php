@@ -13,8 +13,7 @@
 Route::get('/passwords/login', 'HomeController@__construct');
 Route::get('/register', 'RegisterController@showRegistrationForm');
 
-
-
+/*POST*/
 Route::get('/', 'PostController@index');
 
 Route::get('/contents/{post}', 'PostController@show');
@@ -30,4 +29,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/user/{post}/about', 'PostController@about');
+/*USER*/
+Route::get('/users/{user}', 'UserController@show')->middleware('auth');
+
+Route::get('/users/{user}/work', 'UserController@work');
+
+Route::get('/users/{user}/edit', 'UserController@edit')->middleware('auth');
+Route::put('/users/{user}', 'UserController@update')->middleware('auth');
