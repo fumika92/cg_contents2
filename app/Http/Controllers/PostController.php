@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostRequest;
+use illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -12,7 +14,7 @@ class PostController extends Controller
 //ホーム画面を移す
     public function index(Post $post)
     {
-        return view('contents/index')->with(['posts' => $post->get()]);
+        return view('contents/index')->with(['posts' => $post->getPaginateByLimit()]);
     }
 //投稿の詳細画面に移動
     public function show(Post $post)
@@ -27,6 +29,9 @@ class PostController extends Controller
 //編集画面に移動
     public function edit(Post $post)
     {
+        if(Auth::id() !== $post->user_id){
+            return redirect('contents/' . $post->id);
+        }
         return view('contents/edit')->with(['post' => $post]);
     }
 //編集データをDBに送信→詳細画面に反映＆移動
@@ -56,6 +61,9 @@ class PostController extends Controller
 //消去してホーム画面に移動
     public function delete(Post $post)
     {
+        if(Auth::id() !== $post->user_id){
+            return redirect('contents/' . $post->id);
+        }
         $post->delete();
         return redirect('/');
     }
@@ -88,7 +96,7 @@ class PostController extends Controller
         return redirect('/contents/' . $post->id);
     }
     
-    
+
     
     //user
     //ユーザーページに飛ぶ

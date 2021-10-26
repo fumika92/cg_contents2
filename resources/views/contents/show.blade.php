@@ -10,6 +10,20 @@
             <img class="icon" src="{{ $post->user->image_path }}">
             <p><a href="/users/{{ $post->user_id }}">{{ $post->user->name }}</a></p>
           </div>
+          <div class="main_profile_middle">
+            <p>LIKE:{{ $post->users()->count('user_id') }}</p>
+            @if($post->users()->where('user_id', Auth::id())->exists()) <!--exists()は存在すればTrue、しないならFalse-->
+            <form action="{{ route('unlike', $post) }}" method="POST">
+              @csrf
+              <input type="submit" value="&#xf004;UNLIKE" class="fas fa-heart btn_unlike btn">
+            </form>
+            @else
+            <form action="{{ route('like', $post) }}" method="POST">
+              @csrf
+              <input type="submit" value="&#xf004;Like" class="fas fa-heart btn_like btn">
+            </form>
+            @endif
+          </div>
           <div class="main_profile_under">
             <button type="button" name="btn_edit"><a href="/contents/{{ $post->id }}/edit">編集する</a></button>
             <form action='/contents/{{ $post->id }}' id='form_{{ $post->id }}' method='post'>

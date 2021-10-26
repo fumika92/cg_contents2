@@ -30,9 +30,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 /*USER*/
-Route::get('/users/{user}', 'UserController@show')->middleware('auth');
+Route::get('/users/{user}', 'UserController@show');
 
 Route::get('/users/{user}/work', 'UserController@work');
 
-Route::get('/users/{user}/edit', 'UserController@edit')->middleware('auth');
-Route::put('/users/{user}', 'UserController@update')->middleware('auth');
+Route::get('/users/{user}/edit', 'UserController@edit');
+Route::put('/users/{user}', 'UserController@update');
+
+
+/*LIKE*/
+Route::post('/contents/{post}/like', 'LikeController@store')->name('like');
+Route::post('/contents/{post}/unlike', 'LikeController@destroy')->name('unlike');
