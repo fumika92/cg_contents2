@@ -39,10 +39,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    public function getOwnPaginateByLimit(int $limit_count = 10)
+    {
+        // updated_atで降順に並べた後、limitで件数制限をかける
+        return $this::with('posts')->find(Auth::id())->posts()->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+    
     //Postに対するリレーション
     //一対多なので'posts'と複数形に
     public function posts()
     {
         return $this->hasMany('App\Post');
+    }
+    
+    //多対多のリレーション
+    public function likes()
+    {
+        return $this->belongsToMany('App\Post');
     }
 }

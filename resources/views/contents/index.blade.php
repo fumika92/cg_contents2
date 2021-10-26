@@ -7,4 +7,7 @@
             <a href="/contents/{{ $post->id }}"><img src="{{ $post->image_path }}"></a>
         @endforeach
     </div>
+    <div class="paginate">
+        {{ $posts->links() }}
+    </div>
 @endsection

@@ -10,20 +10,22 @@ use illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function show()
+    public function show(User $user)
     {
-        $user = Auth::user();
         return view('users/show')->with(['user' => $user]);
     }
     public function work(User $user)
     {
         $user = Auth::user();
-        return view('Users/work')->with(['user' => $user]);
+        return view('users/work')->with(['user' => $user, 'own_posts' => $user->getOwnPaginateByLimit()]);
     }
     
     
-    public function edit()
+    public function edit(Post $post, User $user)
     {
+        if(Auth::id() !== $post->user_id){
+            return redirect('users/' . $user->id);
+        }
         $user = Auth::user();
         return view('users/edit')->with(['user' => $user]);
     }

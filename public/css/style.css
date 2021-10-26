@@ -15,11 +15,13 @@ a:hover {
   color: rgba(0, 0, 0, 0.4);
   transition: 0.6s;
 }
+.btn,
 button {
   background-color: #fff;
   border: 0.3px solid #333;
   border-radius: 3px;
 }
+.btn:hover,
 button:hover {
   color: rgba(0, 0, 0, 0.4);
   transition: 0.6s;
@@ -151,11 +153,25 @@ aside {
   font-size: 1.2rem;
   margin-left: 20px;
 }
+.main_profile_middle {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.95rem;
+}
 .main_profile_under {
   display: flex;
   justify-content: flex-end;
   font-size: 0.95rem;
 }
+.btn_like {
+  background: #ffb6c1;
+  color: #fff;
+}
+.btn_unlike {
+  background: #48d1cc;
+  color: #fff;
+}
+.main_profile .btn,
 .main_profile button {
   margin-right: 20px;
   padding: 5px 10px;
@@ -240,4 +256,27 @@ aside {
 }
 .main_description button {
   padding: 6px 15px;
+}
+
+
+
+
+
+
+
+/*------- FONT AWESOME-------------------------------------------*/
+
+@font-face {
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?0c6bfc668a72935760178f91327aed3a);
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?0c6bfc668a72935760178f91327aed3a) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?d824df7eb2e268626a2dd9a6a741ac4e) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff?d745348d289b149026921f197929a893) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?b9625119ce4300f0ef890a8f3234c773) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg?37bc7099f6f1ba80236164f22e905837) format("svg");
+}
+
+.fa,
+.fas {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
 }

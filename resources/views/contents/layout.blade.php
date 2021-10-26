@@ -7,7 +7,6 @@
         <title>CG制作物投稿サイト</title>
         
         <link rel="stylesheet" href="/css/font.css">
-        <link href='/css/ress.css'>
         <link href='/css/style.css' rel="stylesheet">
     </head>
     <body>
