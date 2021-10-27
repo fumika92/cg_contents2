@@ -36,5 +36,10 @@
             トダミーテキストダミーテキストダミーテキストダミーテキスト</p>
         </div>
     </div>
+    <div class="comment_store">
+      <form>
+        <textarea></textarea>
+      </form>
+    </div>
     <a href="/">back</a>
 @endsection
