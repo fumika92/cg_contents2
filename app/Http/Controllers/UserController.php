@@ -16,21 +16,22 @@ class UserController extends Controller
     }
     public function work(User $user)
     {
-        $user = Auth::user();
         return view('users/work')->with(['user' => $user, 'own_posts' => $user->getOwnPaginateByLimit()]);
+    }
+    public function like(User $user)
+    {
+        return view('users/like')->with(['user' => $user, 'likes' => $user->getLikePaginateByLimit()]);
     }
     
     
     public function edit(Post $post, User $user)
     {
-        if(Auth::id() !== $post->user_id){
-            return redirect('users/' . $user->id);
-        }
-        $user = Auth::user();
-        return view('users/edit')->with(['user' => $user]);
+            $user = Auth::user();
+            return view('users/edit')->with(['user' => $user]);
     }
     public function update(UserRequest $request, User $user)
     {
+        $user = Auth::user();
         $input_user = $request['user'];
         $image = $request->file('image');
         

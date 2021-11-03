@@ -13,7 +13,13 @@
 Route::get('/passwords/login', 'HomeController@__construct');
 Route::get('/register', 'RegisterController@showRegistrationForm');
 
-/*POST*/
+//GOOGLE LOGIN
+Route::get('login/google', 'Auth\GoogleLoginController@redirectToGoogle');
+Route::get('login/google/callback', 'Auth\GoogleLoginController@handleGoogleCallback');
+
+
+
+//POST
 Route::get('/', 'PostController@index');
 
 Route::get('/contents/{post}', 'PostController@show');
@@ -29,15 +35,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-/*USER*/
+//USER
 Route::get('/users/{user}', 'UserController@show');
-
 Route::get('/users/{user}/work', 'UserController@work');
-
+Route::get('/users/{user}/like', 'UserController@like');
 Route::get('/users/{user}/edit', 'UserController@edit');
-Route::put('/users/{user}', 'UserController@update');
+Route::put('/users/{users}', 'UserController@update');
 
+//LIKE
+Route::post('contents/{post}/like', 'LikeController@store')->name('like');
+Route::post('contents/{post}/unlike', 'LikeController@destroy')->name('unlike');
 
-/*LIKE*/
-Route::post('/contents/{post}/like', 'LikeController@store')->name('like');
-Route::post('/contents/{post}/unlike', 'LikeController@destroy')->name('unlike');
+//COMMENT
+Route::post('/contents/{post}/comment', 'CommentController@store')->name('comment');
+Route::delete('/contents/{post}/comment', 'CommentController@delete')->name('comment_delete');

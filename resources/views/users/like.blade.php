@@ -12,11 +12,11 @@
         <button type="button" name="btn_like"><a href="/users/{{ $user->id }}/like">いいね</a></button>
     </div>
     <div class="cg_contents_all">
-        @foreach ($own_posts as $post)
-            <a href="/contents/{{ $post->id }}"><img src="{{ $post->image_path }}"></a>
+        @foreach ($likes as $like)
+            <a href="/contents/{{ $like->id }}"><img src="{{ $like->image_path }}"></a>
         @endforeach
     </div>
     <div class="paginate">
-        {{ $own_posts->links() }}
+        {{ $likes->links() }}
     </div>
 @endsection
