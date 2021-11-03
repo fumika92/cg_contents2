@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\User;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostRequest;
 use illuminate\Support\Facades\Auth;
@@ -19,7 +18,9 @@ class PostController extends Controller
 //投稿の詳細画面に移動
     public function show(Post $post)
     {
-        return view('contents/show')->with(['post' => $post]);
+        $user = Auth::user();
+        $post->load('comments');
+        return view('contents/show')->with(['post' => $post, 'user' => $user]);
     }
 //作成画面に移動
     public function create()
@@ -29,9 +30,6 @@ class PostController extends Controller
 //編集画面に移動
     public function edit(Post $post)
     {
-        if(Auth::id() !== $post->user_id){
-            return redirect('contents/' . $post->id);
-        }
         return view('contents/edit')->with(['post' => $post]);
     }
 //編集データをDBに送信→詳細画面に反映＆移動
@@ -39,20 +37,6 @@ class PostController extends Controller
     {
         $input_post = $request['post'];
         $input_post += ['user_id' => $request->user()->id];
-        $image = $request->file('image');
-        
-        //画像がアップロードされていればStorageに保存
-        if($request->hasFile('image')){
-            //バケットの'fumika01'フォルダへアップロード
-            $path = Storage::disk('s3')->putFile('/post', $image, 'public');
-            //アップロードした画像のフルパスを取得
-            $url = Storage::disk('s3')->url($path);
-        }else{
-            $url = null;
-        }
-        
-        $input_post += ['image_path' => $url];
-        
         $post->fill($input_post)->save();
         return redirect('contents/' . $post->id);
     }
@@ -61,9 +45,6 @@ class PostController extends Controller
 //消去してホーム画面に移動
     public function delete(Post $post)
     {
-        if(Auth::id() !== $post->user_id){
-            return redirect('contents/' . $post->id);
-        }
         $post->delete();
         return redirect('/');
     }
@@ -83,7 +64,7 @@ class PostController extends Controller
             //アップロードした画像のフルパスを取得
             $url = Storage::disk('s3')->url($path);
         }else{
-            $url = null;
+            $path = null;
         }
         //データをデータベースに入れる
         $post->fill([
@@ -91,12 +72,12 @@ class PostController extends Controller
             'body' => $data_body,
             'image_path' => $url,
             'user_id' => $user_id,
-            ])->save();
+        ])->save();
         
-        return redirect('/contents/' . $post->id);
+        return redirect('contents/' . $post->id);
     }
     
-
+    
     
     //user
     //ユーザーページに飛ぶ

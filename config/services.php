@@ -29,5 +29,15 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    
+    
+    
+    
+    /*OAuth*/
+    'google' => [
+    'client_id' => env('GOOGLE_CLIENT_ID'),
+    'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+    'redirect' => 'https://2f291fcee6d6494999335c098e89949d.vfs.cloud9.us-east-1.amazonaws.com' . '/login/google/callback',
+],
 
 ];

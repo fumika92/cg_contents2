@@ -42,7 +42,12 @@ class User extends Authenticatable
     public function getOwnPaginateByLimit(int $limit_count = 10)
     {
         // updated_atで降順に並べた後、limitで件数制限をかける
-        return $this::with('posts')->find(Auth::id())->posts()->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->posts()->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    public function getLikePaginateByLimit(int $limit_count = 10)
+    {
+        // updated_atで降順に並べた後、limitで件数制限をかける
+        return $this->likes()->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
     
@@ -57,5 +62,10 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->belongsToMany('App\Post');
+    }
+    
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 }
