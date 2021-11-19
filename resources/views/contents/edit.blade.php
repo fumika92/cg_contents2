@@ -32,6 +32,25 @@
               </article>
               <aside class="main_profile">
                 <input type="file" name="image" value="{{ $post->image_path }}">
+                <input type="file" name="file">
+                <select class="nav_category_select" name="post[category_id]" size="1">
+                    <option value="1" label="カテゴリ"></option>
+                    <option value="2" label="＜モデル＞"></option>
+                    <option value="3" label="モデル（背景）"></option>
+                    <option value="4" label="モデル（キャラクター）"></option>
+                    <option value="5" label="モデル（モノ）"></option>
+                    <option value="6" label="モデル（乗り物）"></option>
+                    <option value="7" label="モデル（食べ物）"></option>
+                    <option value="8" label="＜アニメーション＞"></option>
+                    <option value="9" label="アニメーション（日常）"></option>
+                    <option value="10" label="アニメーション（格闘）"></option>
+                    <option value="11" label="アニメーション（フェイス）"></option>
+                    <option value="12" label="アニメーション（トレス）"></option>
+                    <option value="13" label="ポーズ（オリジナル）"></option>
+                    <option value="14" label="ポーズ（トレス）"></option>
+                    <option value="15" label="＜スクリプト＞"></option>
+                    <option value="16" label="スクリプト"></option>
+                </select>
               </aside>
             </div>
             <input type="submit" value="確定">

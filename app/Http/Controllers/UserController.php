@@ -8,19 +8,19 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UserRequest;
 use illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
     public function show(User $user)
     {
-        return view('users/show')->with(['user' => $user]);
-    }
-    public function work(User $user)
-    {
-        return view('users/work')->with(['user' => $user, 'own_posts' => $user->getOwnPaginateByLimit()]);
-    }
-    public function like(User $user)
-    {
-        return view('users/like')->with(['user' => $user, 'likes' => $user->getLikePaginateByLimit()]);
+        $categories = DB::table('categories')->get();
+        return view('users/show')->with([
+            'user' => $user,
+            'own_posts' => $user->getOwnPaginateByLimit(),
+            'likes' => $user->getLikePaginateByLimit(), 
+            'categories' => $categories
+        ]);
     }
     
     

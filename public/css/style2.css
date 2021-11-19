@@ -1,0 +1,292 @@
+@charset "UTF-8";
+
+/*全部共通*/
+body {
+  font-family: 'Shippori Mincho B1', serif;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+a:hover {
+  color: rgba(0, 0, 0, 0.4);
+  transition: 0.6s;
+}
+.btn,
+button {
+  background-color: #fff;
+  border: 0.3px solid #333;
+  border-radius: 3px;
+}
+.btn:hover,
+button:hover {
+  color: rgba(0, 0, 0, 0.4);
+  transition: 0.6s;
+}
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+img {
+  max-width: 100%;
+}
+h1 {
+  font-weight: normal;
+  font-size: 1.8rem;
+}
+h2 {
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+
+/*HEADER*/
+header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 2% 0;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.main_nav_search {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #333;
+  border-radius: 3px;
+}
+.nav_search {
+  width: 100%;
+  padding: 10px;
+  border: none;
+}
+.nav_category_select {
+  text-align: right;
+  width: 30%;
+  border: none;
+  border-right: 1px solid #333;
+  border-left: 1px solid #333;
+}
+.main_nav_list {
+  display: flex;
+  text-align: center;
+}
+.main_nav_list li {
+  display: flex;
+  border: 1px solid #333;
+  border-radius: 3px;
+  padding: 10px 10px;
+  margin-left: 35px;
+}
+
+.btn_search {
+  width: 10%;
+  position: relative;
+  border: none;
+}
+
+/*MAIN*/
+.home_main {
+  margin-top: 90px;
+}
+.cg_contents_all {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin: 70px auto 0;
+}
+.cg_contents_all img:hover {
+  transform: scale(1.1, 1.1);
+  transition-duration: 0.7s;
+  opacity: .9;
+}
+/*CREATE*/
+.upload-img-btn {
+    margin: 22px auto;
+    padding: 15px;
+    border: 0.3px solid #333;
+    border-radius: 3px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+}
+
+/*FOOTER*/
+footer {
+  margin-top: 70px;
+  border-top: 1px solid #333;
+  padding: 5px 0;
+}
+.footer_p {
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/*MAIN_CONTENTS*/
+.main_contents {
+  display: flex;
+  justify-content: space-between;
+}
+article {
+  width: 60%;
+}
+aside {
+  width: 33%;
+}
+.main_img img{
+  max-height: 380px;
+}
+.main_profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.main_profile_top {
+  display: flex;
+}
+.icon {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.main_profile_top p {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-left: 20px;
+}
+.main_profile_middle {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.95rem;
+}
+.main_profile_under {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.95rem;
+}
+.btn_like {
+  background: #ffb6c1;
+  color: #fff;
+}
+.btn_unlike {
+  background: #48d1cc;
+  color: #fff;
+}
+.main_profile .btn,
+.main_profile button {
+  margin-right: 20px;
+  padding: 5px 10px;
+}
+/*MAIN_DESCRIPTION*/
+.main_description {
+  margin-top: 20px;
+}
+.main_description p {
+  padding-top: 10px;
+}
+/*COMMENT*/
+.comment {
+  display: flex;
+  margin-top: 40px;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+.comment:last-child {
+  border-bottom: none;
+}
+
+
+
+/*プロファイルー全般*/
+.user_profile {
+  display: flex;
+  margin-bottom: 70px;
+}
+.user_profile p {
+  margin: 0 100px 0 20px;
+}
+.user_profile button {
+  padding: 5px 10px;
+  margin-right: 20px;
+}
+.user_profile_button button {
+  margin: 0 20px 10px 0;
+  padding: 5px 10px;
+}
+/*プロファイルー自己紹介*/
+.user_profile_about {
+  border: 1px solid #333;
+  border-radius: 3px;
+  padding: 40px;
+
+  font-size: .9rem;
+}
+
+/*プロファイルー編集*/
+.profile_edit_form input,
+.profile_edit_form textarea {
+  width: 52%;
+  margin-right: 30%;
+}
+.profile_edit_name input,
+.profile_edit_email input,
+.profile_edit_form textarea {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 8px 10px;
+}
+.side {
+  display: flex;
+  justify-content: space-between;
+}
+.error {
+  margin-left: 30%;
+  margin-bottom: 20px;
+}
+.side:not(.profile_edit_about) {
+  margin-bottom: 30px;
+}
+.profile_edit_form button {
+  padding: 15px 30px;
+  margin: 50px 0 50px 0;
+}
+.form_btn {
+  text-align : center;
+  margin-right: 40%;
+}
+.main_description button {
+  padding: 6px 15px;
+}
+
+
+
+
+
+
+
+/*------- FONT AWESOME-------------------------------------------*/
+
+@font-face {
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?0c6bfc668a72935760178f91327aed3a);
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?0c6bfc668a72935760178f91327aed3a) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?d824df7eb2e268626a2dd9a6a741ac4e) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff?d745348d289b149026921f197929a893) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?b9625119ce4300f0ef890a8f3234c773) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg?37bc7099f6f1ba80236164f22e905837) format("svg");
+}
+
+.fa,
+.fas {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
