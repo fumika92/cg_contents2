@@ -20,7 +20,7 @@ Route::get('login/google/callback', 'Auth\GoogleLoginController@handleGoogleCall
 
 
 //POST
-Route::get('/', 'PostController@index');
+Route::get('/', 'PostController@index'); //ホーム画面
 
 Route::get('/contents/{post}', 'PostController@show');
 
@@ -35,10 +35,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//ABOUT
+Route::get('/about', 'PostController@webAbout');
+
+//CATEGORY
+Route::get('/categories/search', 'SearchController@search'); //検索結果を表示する
+
+Route::get('/categories/search/category', 'SearchController@category');
+
+
 //USER
 Route::get('/users/{user}', 'UserController@show');
-Route::get('/users/{user}/work', 'UserController@work');
-Route::get('/users/{user}/like', 'UserController@like');
 Route::get('/users/{user}/edit', 'UserController@edit');
 Route::put('/users/{users}', 'UserController@update');
 

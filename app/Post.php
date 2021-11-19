@@ -15,12 +15,20 @@ class Post extends Model
         'body',
         'image_path',
         'user_id',
+        'category_id',
+        
     ];
     
     public function getPaginateByLimit(int $limit_count = 10)
     {
     // updated_atで降順に並べたあと、limitで件数制限をかける
     return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
+    
+    public function getPaginateSeachByLimit(int $limit_count = 10)
+    {
+    // updated_atで降順に並べたあと、limitで件数制限をかける
+    return $this->orderBy('category_id', 'ASC')->paginate($limit_count);
     }
     
     //Userに対するリレーション
@@ -39,5 +47,11 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany('App\Comment');
+    }
+    
+    //投稿は一つのカテゴリを持つ
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
     }
 }
