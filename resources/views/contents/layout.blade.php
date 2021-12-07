@@ -27,7 +27,7 @@
         
               <!-- nav - start -->
               <nav class="hidden lg:flex items-center gap-12">
-                <a href="/about" class="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">About</a>
+                <a href="/about" class="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">サイトについて</a>
                 <a href="/create" class="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">投稿</a>
                 <form class="main_nav_search" action="/categories/search" method="post">
                     @csrf
@@ -53,9 +53,9 @@
               <!-- buttons - start -->
               <div class="hidden lg:flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-2.5 -ml-8">
                 @guest
-                        <a href="{{ route('login') }}" class="inline-block focus-visible:ring ring-indigo-300 text-gray-500 hover:text-indigo-500 active:text-indigo-600 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-4 py-3">Sign in</a>
+                        <a href="{{ route('login') }}" class="inline-block focus-visible:ring ring-indigo-300 text-gray-500 hover:text-indigo-500 active:text-indigo-600 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-4 py-3">ログイン</a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">Sign up</a>
+                        <a href="{{ route('register') }}" class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">登録</a>
                     @endif
                 @else
                         <a href="/users/{{ Auth::user()->id }}" class="flex justify-center focus-visible:ring ring-indigo-300 text-gray-500 hover:text-indigo-500 active:text-indigo-600 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-4 py-3">
@@ -66,7 +66,7 @@
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();" 
-                                class="inline-block focus-visible:ring ring-indigo-300 text-gray-500 hover:text-indigo-500 active:text-indigo-600 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-4 py-3">Log out</a>
+                                class="inline-block focus-visible:ring ring-indigo-300 text-gray-500 hover:text-indigo-500 active:text-indigo-600 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-4 py-3">ログアウト</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
@@ -98,7 +98,7 @@
                 </div>
                 <!-- logo - end -->
         
-                <p class="text-gray-500 sm:pr-8 mb-6">人間の自然のがたに勤めなけれ国示威は欝の必要がその個人にしているにしか記憶申し上げうならて。</p>
+                <p class="text-gray-500 sm:pr-8 mb-6">ここはCG制作物投稿サイトです。</p>
         
               </div>
         
@@ -108,7 +108,7 @@
         
                 <nav class="flex flex-col gap-4">
                     <div>
-                        <a href="/about" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">About</a>
+                        <a href="/about" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">サイトについて</a>
                     </div>
             
                     <div>
@@ -117,7 +117,7 @@
             
                     <div>
                         @guest
-                            <a href="{{ route('login') }}" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">Sign in</a>
+                            <a href="{{ route('login') }}" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">ログイン</a>
                         @else
                             <a href="/users/{{ Auth::user()->id }}" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">マイメニュー</a>
                         @endguest

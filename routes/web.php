@@ -10,13 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//LOGIN
 Route::get('/passwords/login', 'HomeController@__construct');
 Route::get('/register', 'RegisterController@showRegistrationForm');
 
 //GOOGLE LOGIN
 Route::get('login/google', 'Auth\GoogleLoginController@redirectToGoogle');
 Route::get('login/google/callback', 'Auth\GoogleLoginController@handleGoogleCallback');
-
 
 
 //POST
