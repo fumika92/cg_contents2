@@ -34,57 +34,57 @@
         </div>
         <!-- date notice - end -->
 
-        <!-- buttons - start -->
+        <!-- LIKE-buttons - start -->
         <div class="flex gap-2.5">
-          <span class="inline-block flex-1 sm:flex-none bg-indigo-500 flex justify-center items-center bg-white text-gray-400 text-sm font-semibold text-center border border-transparent rounded-md cursor-not-allowed">Like:{{ $post->users()->count('user_id') }}</span>
-
-		  @if($post->users()->where('user_id', Auth::id())->exists()) <!--exists()は存在すればTrue、しないならFalse-->
+          <span class="inline-block flex-1 sm:flex-none flex justify-center items-center bg-white text-gray-400 text-sm font-semibold text-center border border-transparent rounded-md">Like:{{ $post->users()->count('user_id') }}</span>
+          
+          @if($post->users()->where('user_id', Auth::id())->exists()) <!--exists()は存在すればTrue、しないならFalse-->
             <form action="{{ route('unlike', $post) }}" method="POST">
               @csrf
-              <input type="submit" value="&#xf004;UNLIKE" class="fas fa-heart btn_unlike btn">
+              <input type="submit" value="UNLIKE" class="p-1 pl-3 pr-3 bg-transparent text-sm rounded-lg bg-blue-300 text-white">
             </form>
           @else
             <form action="{{ route('like', $post) }}" method="POST">
               @csrf
-              <input type="submit" value="&#xf004;Like" class="fas fa-heart btn_like btn">
+              <input type="submit" value="Like" class="p-1 pl-3 pr-3 bg-transparent text-sm rounded-lg bg-red-300 text-white">
             </form>
           @endif
         </div>
-		<div class="flex gap-2.5">
-			@guest
-			@else
-				@if (Auth::user()->id !== $post->user->id)
-				@else
-				<div class="main_profile_under">
-					<button type="button" name="btn_edit"><a href="/contents/{{ $post->id }}/edit">編集する</a></button>
-					<form action='/contents/{{ $post->id }}' id='form_{{ $post->id }}' method='post'>
-					@csrf
-					@method('DELETE')
-					<button type="submit" name="btn_delete">消去する</button>
-					</form>
-				</div>
-				@endif
-			@endguest
-		</div>
-        <!-- buttons - end -->
-
-        <!-- description - start -->
-        <div class="mt-10 md:mt-16 lg:mt-20">
-          <div class="text-gray-800 text-lg font-semibold mb-3">Description</div>
-
-          <p class="text-gray-500">
-            {{ $post->body }}
-          </p>
+        <div class="flex gap-2.5">
+        @guest
+          @else
+          @if (Auth::user()->id !== $post->user->id)
+          @else
+            <div class="pt-6">
+            <button type="button" name="btn_edit" class="pb-1 text-gray-700 hover:text-opacity-70"><a href="/contents/{{ $post->id }}/edit">編集する</a></button>
+              <form action='/contents/{{ $post->id }}' id='form_{{ $post->id }}' method='post'>
+                @csrf
+                @method('DELETE')
+                <button type="submit" name="btn_delete" class="text-gray-700 hover:text-opacity-70">消去する</button>
+              </form>
+            </div>
+          @endif
+        @endguest
         </div>
-        <!-- description - end -->
+        <!-- LIKE-buttons - end -->
       </div>
       <!-- content - end -->
+
+      <!-- description - start -->
+      <div class="mt-7">
+        <div class="text-gray-800 text-lg font-semibold mb-3">Description</div>
+
+        <p class="text-gray-500">
+          {{ $post->body }}
+        </p>
+      </div>
+      <!-- description - end -->
     </div>
   </div>
 
   <!-- コメント！レビュー -->
 
-  <div class="max-w-screen-md px-4 md:px-8 mx-auto">
+  <div class="max-w-screen-md px-4 mx-auto mt-10">
     <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8 xl:mb-12">Comments</h2>
 
     <div class="flex justify-between items-center border-t border-b py-4 mb-4">
@@ -94,11 +94,11 @@
         <span class="block text-gray-500 text-sm">コメントをするにはログインが必須です</span>
       @else
         <div class="flex justify-between items-center">
-          <img class="" src="{{ $user->image_path }}">
-          <form action="{{ route('comment', $post) }}" method="POST" enctype="multipart/form-data">
+          <img class="icon" src="{{ $user->image_path }}">
+          <form action="{{ route('comment', $post) }}" method="POST" enctype="multipart/form-data" class="pl-10">
             @csrf
             <input type="hidden" name="post_id" value="{{ $post->id }}">
-            <textarea name="comment[body]" placeholder="コメントを入力してください" class="w-full h-64 bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"></textarea>
+            <textarea name="comment[body]" placeholder="コメントを入力してください" class="w-96 h-24 bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"></textarea>
             <p class="body__error" style="color:red">{{ $errors->first('comment.body') }}</p>
             <button type="submit" name="btn_comment" class="inline-block bg-white hover:bg-gray-100 active:bg-gray-200 focus-visible:ring ring-indigo-300 border text-gray-500 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-4 md:px-8 py-2 md:py-3">コメントする</button>
           </form>

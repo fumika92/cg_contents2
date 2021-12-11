@@ -78,23 +78,12 @@ class PostController extends Controller
         $image = $request->file('image');
         $user_id = $request->user()->id;
         
-        //$imageの拡張子を取得する
-        $image_extension = $request->image->extension();
         //画像がアップロードされていればStorageに保存
         if ($request->hasFile('image')) {
-            if($image_extension == 'jpeg' || $image_extension == 'jpg' || $image_extension == 'png') {
-                //バケットの'fumika01'フォルダへアップロード
-                $path = Storage::disk('s3')->putFile('/contents/image', $image, 'public');
-                //アップロードした画像のフルパスを取得
-                $url = Storage::disk('s3')->url($path);
-            //ファイルの中身が動画だった場合
-            }elseif($image_extension == 'avi' || $image_extension == 'mp4') {
-                $path = Storage::disk('s3')->putFile('/contents/movie', $image, 'public');
-                $url = Storage::disk('s3')->url($path);
-            }else {
-                $path = null;
-                $url = null;
-            }
+            //バケットの'fumika01'フォルダへアップロード
+            $path = Storage::disk('s3')->putFile('/contents/image', $image, 'public');
+            //アップロードした画像のフルパスを取得
+            $url = Storage::disk('s3')->url($path);
         } else {
             $path = null;
             $url = null;

@@ -22,7 +22,7 @@
             <!--  ニックネーム - end  -->
     
             <!--  メールアドレス - start  -->
-            <div class="form-group row">
+            <div>
                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('メールアドレス') }}</label>
     
                 <div class="col-md-6">
@@ -38,7 +38,7 @@
             <!--  メールアドレス - end  -->
     
             <!--  パスワード - start  -->
-            <div class="form-group row">
+            <div>
                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('パスワード') }}</label>
     
                 <div class="col-md-6">
@@ -53,7 +53,7 @@
             </div>
             <!--  パスワード - end  -->
     
-            <div class="form-group row">
+            <div>
                 <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('パスワードをもう1度入力してください') }}</label>
     
                 <div class="col-md-6">

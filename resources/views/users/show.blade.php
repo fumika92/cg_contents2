@@ -33,7 +33,7 @@
         <div class="user_contents">
             <!-- about -->
             <div v-if="isActive === '1'" class="shadow-xl border border-gray-100 font-light p-8 rounded text-gray-500 bg-white mt-6">
-                {{ $user->body }}
+                {!!nl2br($user->body)!!}
             </div>
             
             <!-- work -->

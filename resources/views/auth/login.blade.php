@@ -21,7 +21,7 @@
 
         <div>
           <label for="password" class="inline-block text-gray-800 text-sm sm:text-base mb-2">パスワード</label>
-          <input name="password" class="form-control @error('password') is-invalid @enderror w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" required autocomplete="current-password" />
+          <input name="password" type="password" class="form-control @error('password') is-invalid @enderror w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" required autocomplete="current-password" />
         
           @error('password')
             <span class="invalid-feedback" role="alert">
