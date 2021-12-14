@@ -34,11 +34,19 @@ class SearchController extends Controller
         }
         
         $categories = DB::table('categories')->get();
+        $categories_model = DB::table('categories')->whereBetween('id', [3, 7])->get();
+        $categories_anime = DB::table('categories')->whereBetween('id', [9, 14])->get();
+        $categories_scr = DB::table('categories')->where('id', 16)->get();
         
         return view('categories/search')->with([
             'categories' => $categories,
+            'categories_model' => $categories_model,
+            'categories_anime' => $categories_anime,
+            'categories_scr' => $categories_scr,
+            
             'posts_search' => $posts_search,
             'posts_category' => $posts_category,
+            
         ]);
     }
     
@@ -48,11 +56,18 @@ class SearchController extends Controller
         $posts_category = DB::table('posts')->where('category_id', $category)->get();
         
         $categories = DB::table('categories')->get();
+        $categories_model = DB::table('categories')->whereBetween('id', [3, 7])->get();
+        $categories_anime = DB::table('categories')->whereBetween('id', [9, 14])->get();
+        $categories_scr = DB::table('categories')->where('id', 16)->get();
         
         $posts_search = '';
         
         return view('categories/search')->with([
             'categories' => $categories,
+            'categories_model' => $categories_model,
+            'categories_anime' => $categories_anime,
+            'categories_scr' => $categories_scr,
+            
             'posts_search' => $posts_search,
             'posts_category' => $posts_category,
         ]);

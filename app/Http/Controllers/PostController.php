@@ -17,10 +17,16 @@ class PostController extends Controller
     public function index(Post $post)
     {
         $categories = DB::table('categories')->get();
+        $categories_model = DB::table('categories')->whereBetween('id', [3, 7])->get();
+        $categories_anime = DB::table('categories')->whereBetween('id', [9, 14])->get();
+        $categories_scr = DB::table('categories')->where('id', 16)->get();
         
         return view('contents/index')->with([
             'posts' => $post->getPaginateByLimit(),
             'categories' => $categories,
+            'categories_model' => $categories_model,
+            'categories_anime' => $categories_anime,
+            'categories_scr' => $categories_scr,
         ]);
     }
 //投稿の詳細画面に移動
@@ -30,8 +36,18 @@ class PostController extends Controller
         $post->load('comments');
         $post->load('category');
         $categories = DB::table('categories')->get();
+        $categories_model = DB::table('categories')->whereBetween('id', [3, 7])->get();
+        $categories_anime = DB::table('categories')->whereBetween('id', [9, 14])->get();
+        $categories_scr = DB::table('categories')->where('id', 16)->get();
         
-        return view('contents/show')->with(['post' => $post, 'user' => $user, 'categories' => $categories]);
+        return view('contents/show')->with([
+            'post' => $post,
+            'user' => $user,
+            'categories' => $categories,
+            'categories_model' => $categories_model,
+            'categories_anime' => $categories_anime,
+            'categories_scr' => $categories_scr,
+        ]);
     }
 //作成画面に移動
     public function create()
@@ -42,7 +58,11 @@ class PostController extends Controller
 //編集画面に移動
     public function edit(Post $post)
     {
-        return view('contents/edit')->with(['post' => $post]);
+        $categories = DB::table('categories')->get();
+        return view('contents/edit')->with([
+            'post' => $post,
+            'categories' => $categories,
+        ]);
     }
 //編集データをDBに送信→詳細画面に反映＆移動
     public function update(PostRequest $request, Post $post)
@@ -56,9 +76,19 @@ class PostController extends Controller
         
         $input_post += ['user_id' => $request->user()->id, 'image_path' => $url];
         $post->fill($input_post)->save();
-        $categories = DB::table('categories')->get();
         
-        return redirect('contents/' . $post->id)->with(['post' => $post, 'categories' => $categories]);
+        $categories = DB::table('categories')->get();
+        $categories_model = DB::table('categories')->whereBetween('id', [3, 7])->get();
+        $categories_anime = DB::table('categories')->whereBetween('id', [9, 14])->get();
+        $categories_scr = DB::table('categories')->where('id', 16)->get();
+        
+        return redirect('contents/' . $post->id)->with([
+            'post' => $post,
+            'categories' => $categories,
+            'categories_model' => $categories_model,
+            'categories_anime' => $categories_anime,
+            'categories_scr' => $categories_scr,
+        ]);
     }
     
     
@@ -99,8 +129,16 @@ class PostController extends Controller
         ])->save();
         
         $categories = DB::table('categories')->get();
+        $categories_model = DB::table('categories')->whereBetween('id', [3, 7])->get();
+        $categories_anime = DB::table('categories')->whereBetween('id', [9, 14])->get();
+        $categories_scr = DB::table('categories')->where('id', 16)->get();
         
-        return redirect('contents/' . $post->id)->with(['categories' => $categories]);
+        return redirect('contents/' . $post->id)->with([
+            'categories' => $categories,
+            'categories_model' => $categories_model,
+            'categories_anime' => $categories_anime,
+            'categories_scr' => $categories_scr,
+        ]);
     }
     
     
@@ -108,7 +146,17 @@ class PostController extends Controller
     public function webAbout(Post $post)
     {
         $categories = DB::table('categories')->get();
-        return view('contents/about')->with(['post' => $post, 'categories' => $categories]);
+        $categories_model = DB::table('categories')->whereBetween('id', [3, 7])->get();
+        $categories_anime = DB::table('categories')->whereBetween('id', [9, 14])->get();
+        $categories_scr = DB::table('categories')->where('id', 16)->get();
+        
+        return view('contents/about')->with([
+            'post' => $post,
+            'categories' => $categories,
+            'categories_model' => $categories_model,
+            'categories_anime' => $categories_anime,
+            'categories_scr' => $categories_scr,
+        ]);
     }
 }
 

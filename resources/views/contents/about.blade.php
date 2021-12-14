@@ -6,7 +6,10 @@
     
     <h1 class="text-black-800 text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-12">CG POST</h1>
     
-    <p class="lg:w-4/5 text-gray-500 xl:text-lg leading-relaxed mb-8 md:mb-12">当時上のどう毎号一二二字が見せるまでの差を、何かいうだ発展がします時間はよほどされるのないが、時々別段学校をないて、その方から始めのに必要た好い読むたです。</p>
+    <p class="lg:w-4/5 text-gray-500 xl:text-lg leading-relaxed mb-8 md:mb-12">
+        日本語対応のCG制作投稿サイトがなく、学習者はみんな英語のサイトを使っているのですが、やはり扱いづらく難儀していたため日本語のサイトを作りました。
+        ここでは、自分の投降に対していいね機能やコメントをもらいモチベーションを上げながら、アドバイスや感想をもらえて勉強もできます！
+    </p>
     
     <div class="flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-2.5">
         <a href="/create" class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">投稿する</a>

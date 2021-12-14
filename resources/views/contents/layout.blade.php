@@ -28,8 +28,11 @@
               <!-- nav - start -->
               <nav class="hidden lg:flex items-center gap-12">
                 <a href="/about" class="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">サイトについて</a>
-                <a href="/create" class="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">投稿</a>
-                <form class="main_nav_search" action="/categories/search" method="post">
+                @guest
+                @else
+                  <a href="/create" class="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">投稿</a>
+                @endguest
+                <form class="" action="/categories/search" method="post">
                     @csrf
                     @method('get')
                     <div class="text-gray-600 active:text-indigo-700 text-lg font-semibold transition duration-100 flex items-center justify-between">
@@ -82,6 +85,7 @@
             @yield('main')
         </main>
 
+        <!-- footer -->
         <div class="bg-white pt-4 sm:pt-10 lg:pt-12">
           <footer class="max-w-screen-2xl px-4 md:px-8 mx-auto">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 border-t gap-12 lg:gap-8 pt-10 lg:pt-12 mb-16">
@@ -126,32 +130,17 @@
               </div>
               <!-- nav - end -->
         
-              <!-- nav - start -->
+              <!-- nav -model- start -->
               <div>
                 <div class="text-gray-800 font-bold tracking-widest uppercase mb-4">Model</div>
         
                 <nav class="flex flex-col gap-4">
+                  @foreach($categories_model as $category)
                     <form action="/categories/search/category" method="GET">
-                        <input type="hidden" name="category_id" value="3">
-                        <button type="submit" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">背景</button>
+                        <input type="hidden" name="category_id" value="{{ $category->id }}">
+                        <button type="submit" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">{{ $category->category_name }}</button>
                     </form>
-        
-                    <form action="/categories/category" method="GET">
-                        <input type="hidden" name="category_id" value="4">
-                        <button type="submit" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">キャラクター</button>
-                    </form>
-        
-                  <div>
-                    <a href="" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">モノ</a>
-                  </div>
-        
-                  <div>
-                    <a href="" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">乗り物</a>
-                  </div>
-        
-                  <div>
-                    <a href="" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">食べ物</a>
-                  </div>
+                  @endforeach
                 </nav>
               </div>
               <!-- nav - end -->
@@ -161,29 +150,12 @@
                 <div class="text-gray-800 font-bold tracking-widest uppercase mb-4">Animetion</div>
         
                 <nav class="flex flex-col gap-4">
-                  <div>
-                    <a href="" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">日常</a>
-                  </div>
-        
-                  <div>
-                    <a href="" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">格闘</a>
-                  </div>
-        
-                  <div>
-                    <a href="" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">フェイス</a>
-                  </div>
-        
-                  <div>
-                    <a href="" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">トレス</a>
-                  </div>
-                  
-                  <div>
-                    <a href="" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">ポーズ(オリジナル)</a>
-                  </div>
-                  
-                  <div>
-                    <a href="" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">ポーズ(トレス)</a>
-                  </div>
+                  @foreach($categories_anime as $category)
+                    <form action="/categories/search/category" method="GET">
+                        <input type="hidden" name="category_id" value="{{ $category->id }}">
+                        <button type="submit" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">{{ $category->category_name }}</button>
+                    </form>
+                  @endforeach
                 </nav>
               </div>
               <!-- nav - end -->
@@ -193,9 +165,12 @@
                 <div class="text-gray-800 font-bold tracking-widest uppercase mb-4">script</div>
         
                 <nav class="flex flex-col gap-4">
-                  <div>
-                    <a href="" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">スクリプト</a>
-                  </div>
+                  @foreach($categories_scr as $category)
+                    <form action="/categories/search/category" method="GET">
+                        <input type="hidden" name="category_id" value="{{ $category->id }}">
+                        <button type="submit" class="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">{{ $category->category_name }}</button>
+                    </form>
+                  @endforeach
                 </nav>
               </div>
               <!-- nav - end -->
