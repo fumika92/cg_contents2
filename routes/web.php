@@ -29,7 +29,7 @@ Route::put('/contents/{post}', 'PostController@update');
 
 Route::delete('/contents/{post}', 'PostController@delete');
 
-Route::get('/create', 'PostController@create')->middleware('auth');
+Route::get('/create', 'PostController@create');
 Route::post('/contents', 'PostController@store');
 Auth::routes();
 
