@@ -75,7 +75,7 @@
         <div class="text-gray-800 text-lg font-semibold mb-3">Description</div>
 
         <p class="text-gray-500">
-          {{ $post->body }}
+          {!!nl2br($post->body)!!}
         </p>
       </div>
       <!-- description - end -->

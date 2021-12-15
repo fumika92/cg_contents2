@@ -15,11 +15,17 @@ class UserController extends Controller
     public function show(User $user)
     {
         $categories = DB::table('categories')->get();
+        $categories_model = DB::table('categories')->whereBetween('id', [3, 7])->get();
+        $categories_anime = DB::table('categories')->whereBetween('id', [9, 14])->get();
+        $categories_scr = DB::table('categories')->where('id', 16)->get();
         return view('users/show')->with([
             'user' => $user,
             'own_posts' => $user->getOwnPaginateByLimit(),
             'likes' => $user->getLikePaginateByLimit(), 
-            'categories' => $categories
+            'categories' => $categories,
+            'categories_model' => $categories_model,
+            'categories_anime' => $categories_anime,
+            'categories_scr' => $categories_scr,
         ]);
     }
     

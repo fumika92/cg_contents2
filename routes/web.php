@@ -11,7 +11,6 @@
 |
 */
 //LOGIN
-Route::get('/passwords/login', 'HomeController@__construct');
 Route::get('/register', 'RegisterController@showRegistrationForm');
 
 //GOOGLE LOGIN
