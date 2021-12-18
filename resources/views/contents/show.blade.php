@@ -39,14 +39,18 @@
           <span class="inline-block flex-1 sm:flex-none flex justify-center items-center bg-white text-gray-400 text-sm font-semibold text-center border border-transparent rounded-md">Like:{{ $post->users()->count('user_id') }}</span>
           
           @if($post->users()->where('user_id', Auth::id())->exists()) <!--exists()は存在すればTrue、しないならFalse-->
-            <form action="{{ route('unlike', $post) }}" method="POST">
+            <form action="{{ route('unlike', $post) }}" method="POST" name="form_unlike">
               @csrf
-              <input type="submit" value="UNLIKE" class="p-1 pl-3 pr-3 bg-transparent text-sm rounded-lg bg-blue-300 text-white">
+              <a href="javascript:form_unlike.submit()">
+                <svg class="h-8 w-8 text-blue-300"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" /></svg>
+              </a>
             </form>
           @else
-            <form action="{{ route('like', $post) }}" method="POST">
+            <form action="{{ route('like', $post) }}" method="POST" name="form_like">
               @csrf
-              <input type="submit" value="Like" class="p-1 pl-3 pr-3 bg-transparent text-sm rounded-lg bg-red-300 text-white">
+              <a href="javascript:form_like.submit()">
+                <svg class="h-8 w-8 text-red-300"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7" /> </svg>
+              </a>
             </form>
           @endif
         </div>
