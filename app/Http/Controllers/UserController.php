@@ -54,6 +54,8 @@ class UserController extends Controller
         $input_user += ['image_path' => $url];
         
         $user->fill($input_user)->save();
-        return redirect('users/' . $user->id);
+        return redirect('users/' . $user->id)->with([
+            'user' => $user
+        ]);
     }
 }
