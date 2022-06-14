@@ -14,6 +14,8 @@ class UserController extends Controller
 {
     public function show(User $user)
     {
+        $user = Auth::user();
+        
         $categories = DB::table('categories')->get();
         $categories_model = DB::table('categories')->whereBetween('id', [3, 7])->get();
         $categories_anime = DB::table('categories')->whereBetween('id', [9, 14])->get();
