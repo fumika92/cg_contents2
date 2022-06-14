@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function show(User $user)
+    public function show()
     {
         $user = Auth::user();
         
